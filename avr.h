@@ -38,8 +38,9 @@ typedef unsigned int	UINT;					/* unsigned int型			  */
 /* -------------------------------------------------------------------------- */
 /* マクロ定義			    												  */
 /* -------------------------------------------------------------------------- */
-#define High(reg,bitno)	( reg |= ( 1 << bitno ) )	/* Px_nに1(High)を設定	  */
-#define Low(reg,bitno)	( reg &= ~( 1 << bitno ) )	/* Px_nに0(Low)を設定	  */
+#define High(reg,bitno)	( reg |=  ( 1 << bitno ) )	/* Px_nにHighを設定		  */
+#define Low(reg,bitno)	( reg &= ~( 1 << bitno ) )	/* Px_nにLowを設定		  */
+#define Rev(reg,bitno)	( reg ^=  ( 1 << bitno ) )	/* Px_nを反転			  */
 
 /* -------------------------------------------------------------------------- */
 /* 定数定義			      												      */

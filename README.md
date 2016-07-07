@@ -13,6 +13,12 @@ __レジスタの任意ビットをLow(0)にします。__
 例) DDRD2をLowにする。  
 `Low( DDRD, 2 );`
 
+### `#define Rev( reg, bitno )`
+__レジスタの任意ビットを反転します。__
+
+例) PORTB0を反転する。  
+`Rev( PORTB, 0 );`
+
 ## Function
 
 ### `void delay_ms( SINT ms )`
