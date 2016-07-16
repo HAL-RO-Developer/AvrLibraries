@@ -13,6 +13,12 @@ __レジスタの任意ビットをLow(0)にします。__
 例) DDRD2をLowにする。  
 `Low( DDRD, 2 );`
 
+### `#define Rev( reg, bitno )`
+__レジスタの任意ビットを反転します。__
+
+例) PORTB0を反転する。  
+`Rev( PORTB, 0 );`
+
 ## Function
 
 ### `void delay_ms( SINT ms )`
@@ -53,3 +59,15 @@ __この関数を呼ぶ前に必ずA/D変換の設定をしておいてくださ
 例) A3ポート(PC3)にA/D変換設定を行い、結果をad_valに代入する。  
 `SetADC( &DDRC, &PINC, 3 );`  
 `ad_val = GetADC();`
+
+### `void Interrupt( enum INTERRUPT op )`
+__タイマ割込みの操作を行います。__
+
+例1) タイマ割込み設定  
+`Interrupt( INT_SET );`  
+
+例2) タイマ割込み開始  
+`Interrupt( INT_START );`  
+
+例3) タイマ割込み停止  
+`Interrupt( INT_START ); `
