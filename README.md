@@ -39,12 +39,6 @@ __レジスタの任意ビットの状態(L/H)を取得します。__
 例) A2ポート(PC2)につながっているプッシュボタンの状態を取得する。  
 `state = GetRegState( PINC, 2 );`
 
-### `void MoveServo( volatile UCHR* portx, UCHR bitno, SINT angle )`
-__サーボモータを指定角度に回転させます。__
-
-例) D8ポート(PB0)につながっているサーボモータを120度回転させる。  
-`MoveServo( &PORTB, 0, 120 );`
-
 ### `void SetADC( volatile UCHR* ddrx, volatile UCHR* pinx, UCHR bitno )`
 __任意ポートにA/D変換の設定を行います。__
 
@@ -60,14 +54,16 @@ __この関数を呼ぶ前に必ずA/D変換の設定をしておいてくださ
 `SetADC( &DDRC, &PINC, 3 );`  
 `ad_val = GetADC();`
 
-### `void Interrupt( enum INTERRUPT op )`
-__タイマ割込みの操作を行います。__
+### `SetTimerInterrupt( DBLE ms )`
 
-例1) タイマ割込み設定  
-`Interrupt( INT_SET );`  
+__タイマ割込みのレジスタ設定および割込み許可を行います。__
 
-例2) タイマ割込み開始  
-`Interrupt( INT_START );`  
+例) 100ms間隔でタイマ割込みを動作させる。  
+`SetTimerInterrupt( 100 );`
 
-例3) タイマ割込み停止  
-`Interrupt( INT_START ); `
+### `SetExternalInterrupt( enum PORT port, UCHR bitno )`
+
+__外部割込みのレジスタ設定および割込み許可を行います。__
+
+例) A0スイッチ(PC0)に外部割込み(PIN変化割込み)を動作させる。  
+`SetExternalInterrupt( C_PORT, 0 );`
