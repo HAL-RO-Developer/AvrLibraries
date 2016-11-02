@@ -44,13 +44,85 @@ typedef			 double	DBLE;					/* double型					  */
 #define Low(reg,bitno)	( reg &= ~( 1 << bitno ) )	/* Px_nにLowを設定		  */
 #define Rev(reg,bitno)	( reg ^=  ( 1 << bitno ) )	/* Px_nを反転			  */
 
+#define pinLevel(pin,lv)	( pin( PORT, lv ) )		/* 出力レベル(H/L)を設定  */
+#define pinMode(pin,mode)	( pin( DDR, mode ) )	/* 入出力方向(I/O)を設定  */
+
+/* H/L Level ( lv ) --------------------------------------------------------- */
+#define _HIGH_		High							/* High( 1 )			  */
+#define _LOW_		Low								/* Low ( 0 )			  */
+#define _REV_		Rev								/* Reverse( 反転 ) 		  */
+
+/* I/O Mode ( mode ) -------------------------------------------------------- */
+#define _INPUT_		Low								/* 入力					  */
+#define _OUTPUT_	High							/* 出力					  */
+
+/* 出力レベル(H/L)設定 ------------------------------------------------------ */
+#define ON(pin)			( pin( PORT, High ) )		/* High					  */
+#define OFF(pin)		( pin( PORT, Low ) )		/* Low					  */
+
+/* 入出力方向(I/O)を設定 ---------------------------------------------------- */
+#define INPUT(pin)		( pin( DDR, Low ) )			/* 入力					  */
+#define OUTPUT(pin)		( pin( DDR, High ) )		/* 出力					  */
+
+/* B_PORT ------------------------------------------------------------------- */
+#define PinB0(reg,lv)	( lv( ( reg ## B ), 0 ) )
+#define PinB1(reg,lv)	( lv( ( reg ## B ), 1 ) )
+#define PinB2(reg,lv)	( lv( ( reg ## B ), 2 ) )
+#define PinB3(reg,lv)	( lv( ( reg ## B ), 3 ) )
+#define PinB4(reg,lv)	( lv( ( reg ## B ), 4 ) )
+#define PinB5(reg,lv)	( lv( ( reg ## B ), 5 ) )
+#define PinB6(reg,lv)	( lv( ( reg ## B ), 6 ) )
+#define PinB7(reg,lv)	( lv( ( reg ## B ), 7 ) )
+
+/* C_PORT ------------------------------------------------------------------- */
+#define PinC0(reg,lv)	( lv( ( reg ## C ), 0 ) )
+#define PinC1(reg,lv)	( lv( ( reg ## C ), 1 ) )
+#define PinC2(reg,lv)	( lv( ( reg ## C ), 2 ) )
+#define PinC3(reg,lv)	( lv( ( reg ## C ), 3 ) )
+#define PinC4(reg,lv)	( lv( ( reg ## C ), 4 ) )
+#define PinC5(reg,lv)	( lv( ( reg ## C ), 5 ) )
+#define PinC6(reg,lv)	( lv( ( reg ## C ), 6 ) )
+#define PinC7(reg,lv)	( lv( ( reg ## C ), 7 ) )
+
+/* D_PORT ------------------------------------------------------------------- */
+#define PinD0(reg,lv)	( lv( ( reg ## D ), 0 ) )
+#define PinD1(reg,lv)	( lv( ( reg ## D ), 1 ) )
+#define PinD2(reg,lv)	( lv( ( reg ## D ), 2 ) )
+#define PinD3(reg,lv)	( lv( ( reg ## D ), 3 ) )
+#define PinD4(reg,lv)	( lv( ( reg ## D ), 4 ) )
+#define PinD5(reg,lv)	( lv( ( reg ## D ), 5 ) )
+#define PinD6(reg,lv)	( lv( ( reg ## D ), 6 ) )
+#define PinD7(reg,lv)	( lv( ( reg ## D ), 7 ) )
+
+/* Digital Port ------------------------------------------------------------ */
+#define PORT_D0		PinD0
+#define PORT_D1		PinD1
+#define PORT_D2		PinD2
+#define PORT_D3		PinD3
+#define PORT_D4		PinD4
+#define PORT_D5		PinD5
+#define PORT_D6		PinD6
+#define PORT_D7		PinD7
+#define PORT_D8		PinB0
+#define PORT_D9		PinB1
+#define PORT_D10	PinB2
+#define PORT_D11	PinB3
+#define PORT_D12	PinB4
+#define PORT_D13	PinB5
+
+/* Anarog Port -------------------------------------------------------------- */
+#define PORT_A0 	PinC0
+#define PORT_A1 	PinC1
+#define PORT_A2 	PinC2
+#define PORT_A3 	PinC3
+#define PORT_A4 	PinC4
+#define PORT_A5 	PinC5
+
 /* -------------------------------------------------------------------------- */
 /* 定数定義			      												      */
 /* -------------------------------------------------------------------------- */
 #define HIGH			(    1 )				/* Hレベル					  */
 #define LOW				(    0 )				/* Lレベル					  */
-#define INPUT			(  LOW )				/* 入力						  */
-#define OUTPUT			( HIGH )				/* 出力						  */
 #define SWT_OFF			( HIGH )				/* スイッチOFF状態			  */
 #define SWT_ON			(  LOW )				/* スイッチON状態			  */
 
